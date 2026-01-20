@@ -24,8 +24,8 @@ func create_chat(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, res.Error.Error(), http.StatusInternalServerError)
 		return
 	}
-	log.Println("чат создан, id:%d", chat.ID)
-	sendJSON(w, http.StatusOK, map[string]uint{"id": chat.ID})
+	log.Printf("чат создан, id:%d \n", chat.ID)
+	sendJSON(w, http.StatusCreated, map[string]uint{"id": chat.ID})
 }
 
 func send_message(w http.ResponseWriter, r *http.Request, ChatID string) {
@@ -55,8 +55,8 @@ func send_message(w http.ResponseWriter, r *http.Request, ChatID string) {
 		http.Error(w, res.Error.Error(), http.StatusInternalServerError)
 		return
 	}
-	sendJSON(w, http.StatusOK, msg)
-	log.Println("Новое сообщение: %s", msg.Text)
+	sendJSON(w, http.StatusCreated, msg)
+	log.Printf("Новое сообщение: %s \n", msg.Text)
 }
 
 func get_chat(w http.ResponseWriter, r *http.Request, ChatID string) {
@@ -92,7 +92,7 @@ func get_chat(w http.ResponseWriter, r *http.Request, ChatID string) {
 		"chat":     chat,
 		"messages": msg,
 	})
-	log.Println("запросили чат :%d", id)
+	log.Printf("запросили чат :%d \n", id)
 }
 
 func delete_chat(w http.ResponseWriter, r *http.Request, ChatID string) {
@@ -109,6 +109,6 @@ func delete_chat(w http.ResponseWriter, r *http.Request, ChatID string) {
 
 	db.Delete(&chat, id)
 
-	sendJSON(w, http.StatusNoContent, 0)
-	log.Println("удалили чат :%d", id)
+	sendJSON(w, 204, 0)
+	log.Printf("удалили чат :%d \n", id)
 }

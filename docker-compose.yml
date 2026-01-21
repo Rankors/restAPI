@@ -7,3 +7,17 @@ services:
       POSTGRES_DB: chatsdb
     ports:
       - "5432:5432"
+  api:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_NAME: chatsdb
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data:

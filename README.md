@@ -135,7 +135,7 @@ Content-Type: application/json
   ```
 
 ### 📑 Миграции
-Для работы с БД используются миграции через [goose](https://github.com/pressly/goose).  
+Миграция БД через [goose](https://github.com/pressly/goose).  
   
 Применение миграций:
 ```bash

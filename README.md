@@ -28,6 +28,7 @@ Content-Type: application/json
   "title": "My chat"
 }
 **Ответ**
+```http
 {
     "id": id созданого чата,
     "title": "My chat"

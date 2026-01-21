@@ -45,7 +45,7 @@ func router(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func sendJSON(w http.ResponseWriter, status int, data any) {
+func sendJSON(w http.ResponseWriter, status int, data any) { // отправка готовый жсон клиенту
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
 	json.NewEncoder(w).Encode(data)

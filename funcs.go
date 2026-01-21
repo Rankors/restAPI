@@ -25,7 +25,7 @@ func create_chat(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	log.Printf("чат создан, id:%d \n", chat.ID)
-	sendJSON(w, http.StatusCreated, map[string]uint{"id": chat.ID})
+	sendJSON(w, http.StatusCreated, chat)
 }
 
 func send_message(w http.ResponseWriter, r *http.Request, ChatID string) {

@@ -3,7 +3,7 @@ package main
 import "time"
 
 type Chat struct {
-	ID    uint   `gorm:"primaryKey"`
+	ID    uint   `gorm:"primaryKey" json:"id"`
 	Title string `gorm:"size:200;not null" json:"title"`
 }
 

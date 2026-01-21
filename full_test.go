@@ -21,12 +21,17 @@ func TestFullApi(t *testing.T) { // комплексная проверка вс
 	_ = json.Unmarshal(body, &chat)
 	chatId := fmt.Sprint(chat["id"]) // создали новый чат и получили его id
 
-	for i := 1; i <= 15; i++ {
-		msg := fmt.Sprintf(`{"text":"msg %d"}`, i)
-		w, r = zapros(msg, http.MethodPost, "/chats/"+chatId+"/messages")
-		send_message(w, r, chatId)
-		assert.Equal(t, http.StatusCreated, w.Result().StatusCode)
-		assert.Contains(t, string(body), fmt.Sprintf("msg %d", i))
+	for i := 1; i <= 10; i++ {
+		payload := fmt.Sprintf(`{"text":"msg %d"}`, i)
+		w, req := zapros(payload, http.MethodPost, "/chats/"+chatId+"/messages")
+		send_message(w, req, chatId)
+		resp := w.Result()
+		body, _ := io.ReadAll(resp.Body)
+		assert.Equal(t, http.StatusCreated, resp.StatusCode)
+		var m Message
+		_ = json.Unmarshal(body, &m)
+		assert.Equal(t, fmt.Sprintf("msg %d", i), m.Text)
+		assert.Equal(t, chatId, fmt.Sprint(m.ChatID))
 	} // отправляет сообщение по циклу
 
 	w, r = zapros(`{}`, http.MethodGet, "/chats/"+chatId+"?limit=3") // запрос сообщений

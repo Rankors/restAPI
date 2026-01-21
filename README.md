@@ -116,3 +116,14 @@ Content-Type: application/json
 ```
 **ответ:**
 В ответ придет только код, успешно - 204, не найден такой чат - 404
+  
+  
+  
+  
+## 🚀 Запуск проекта
+
+### Запуск через Docker Compose
+1. Установите [Docker](https://docs.docker.com/get-docker/) и [Docker Compose](https://docs.docker.com/compose/).
+2. В корне проекта выполните:
+   ```bash
+   docker-compose up --build

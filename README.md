@@ -26,7 +26,7 @@ Content-Type: application/json
 
 {
   "title": "My chat"
-}
+}```
 **Ответ**
 ```http
 {

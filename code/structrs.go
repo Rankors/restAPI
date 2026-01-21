@@ -3,8 +3,9 @@ package main
 import "time"
 
 type Chat struct {
-	ID    uint   `gorm:"primaryKey" json:"id"`
-	Title string `gorm:"size:200;not null" json:"title"`
+	ID        uint      `gorm:"primaryKey" json:"id"`
+	Title     string    `gorm:"size:200;not null" json:"title"`
+	CreatedAt time.Time `gorm:"default:now()" json:"create_time"`
 }
 
 type Message struct {

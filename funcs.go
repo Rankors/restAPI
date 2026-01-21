@@ -32,7 +32,7 @@ func send_message(w http.ResponseWriter, r *http.Request, ChatID string) {
 
 	id, err := strconv.Atoi(ChatID)
 	if err != nil {
-		http.Error(w, "это не id", http.StatusBadRequest)
+		http.Error(w, "это не id", http.StatusNotFound)
 		return
 	}
 	chat, err := find_chat(id)

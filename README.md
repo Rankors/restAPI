@@ -31,7 +31,7 @@ Content-Type: application/json
 {
   "title": "My chat"
 }
-### ответ:
+**ответ:**
 В ответ придет json, внутри есть id: id чата, который создали, а так же вернет title
 {
   "id": 1,

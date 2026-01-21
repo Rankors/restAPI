@@ -19,6 +19,10 @@
 ### 1. Создать чат
 **POST** `/chats/`
 
+```markdown
+### Создать чат
+Создаёт новый чат с указанным названием.
+
 **Запрос:**
 ```http
 POST /chats/
@@ -26,10 +30,4 @@ Content-Type: application/json
 
 {
   "title": "My chat"
-}```
-**Ответ**
-```http
-{
-    "id": id созданого чата,
-    "title": "My chat"
 }

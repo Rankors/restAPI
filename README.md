@@ -79,7 +79,7 @@ Content-Type: application/json
 Кол-во сообщений для получения указываем в limit, в адрессной строке, максимум 100, минимум 1, стандартно 20.
 **Запрос:**
 ```http
-POST /chats/id?limit=N
+GET /chats/id?limit=N
 Content-Type: application/json
 ```
 **ответ:**
@@ -93,12 +93,26 @@ Content-Type: application/json
     "chat_id": 1, 
     "text": "Привет", 
     "create_time": "2026-01-21T10:20:25Z" 
-    }, 
-    { 
-      "msg_id": 9, 
+  }, 
+  { 
+    "msg_id": 9, 
     "chat_id": 1, 
     "text": "Второе", 
     "create_time": "2026-01-21T10:19:10Z" 
-    } 
-    ]
+  } 
+]
 ```
+
+
+### 3. Удаление чата
+**DELETE** `/chats/{id}/`
+```markdown
+### Удаление чата
+Получяет id чата, который указали в адрессной строке, и каскадно удаляет этот чат, вместе со всеми сообщения, которые в нем были.
+**Запрос:**
+```http
+DELETE /chats/id/
+Content-Type: application/json
+```
+**ответ:**
+В ответ придет только код, успешно - 204, не найден такой чат - 404
